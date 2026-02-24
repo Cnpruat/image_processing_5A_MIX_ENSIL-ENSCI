@@ -2,6 +2,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 shapes = cv2.imread("./Image_files/shapes.png")
 shapes = cv2.cvtColor(shapes, cv2.COLOR_BGR2RGB)
@@ -18,12 +19,11 @@ plt.title("Image originale")
 plt.axis("off")
 
 # ------------- Question 1 -------------
-# Histogramme (aplatir l’image avec ravel)
+# Histogramme
 hist_vals, bins = np.histogram(shapes_double.ravel(), bins=256, range=(0,1))
 plt.subplot(3,4,9)
 plt.plot(hist_vals)
 plt.title("Histogramme de l'image")
-
 
 # ------------- Question 2 -------------
 # Seuillage
@@ -124,5 +124,17 @@ plt.title("Résultat - Uniquement cercle bleu")
 plt.axis("off")
 
 plt.tight_layout(rect=[0, 0.03, 1, 0.95]) # Organisation de la fenêtre
+
+plt.imsave(f"Res_Ex1/01_originale.png", shapes_double)
+
+plt.imsave(f"Res_Ex1/02_masque_bleu.png", maskB, cmap="gray")
+plt.imsave(f"Res_Ex1/03_masque_bleu_fonce.png", maskBF, cmap="gray")
+plt.imsave(f"Res_Ex1/04_masque_bleu_ciel.png", maskBC, cmap="gray")
+
+plt.imsave(f"Res_Ex1/05_selection_bleus.png", resultat)
+plt.imsave(f"Res_Ex1/06_selection_fonce.png", resultatF)
+plt.imsave(f"Res_Ex1/07_selection_ciel.png", resultatC)
+
+plt.imsave(f"Res_Ex1/08_resultat_cercle_bleu.png", resultat_final)
 plt.show()
 # %%
