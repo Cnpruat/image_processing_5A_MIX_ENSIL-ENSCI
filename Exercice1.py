@@ -79,7 +79,7 @@ plt.axis("off")
 
 # ------------- Question 3 -------------
 # On repasse en entier (0 - 255)
-mask_uint8 = (maskB * 255).astype(np.uint8)
+mask_uint8 = (maskBF * 255).astype(np.uint8)
 
 # On localise les contours sur notre masque
 contours, _ = cv2.findContours(mask_uint8, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -135,6 +135,7 @@ plt.imsave(f"Res_Ex1/05_selection_bleus.png", resultat)
 plt.imsave(f"Res_Ex1/06_selection_fonce.png", resultatF)
 plt.imsave(f"Res_Ex1/07_selection_ciel.png", resultatC)
 
-plt.imsave(f"Res_Ex1/08_resultat_cercle_bleu.png", resultat_final)
+plt.imsave(f"Res_Ex1/08_masque_cercle.png", mask_cercle_3d)
+plt.imsave(f"Res_Ex1/09_resultat_cercle_bleu.png", resultat_final)
 plt.show()
 # %%
