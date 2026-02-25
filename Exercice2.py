@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.figure(figsize=(15,8))
+plt.suptitle("Exercice 2 - Traitements sur 3 cas avec problèmes de bruit et/ou de constraste", weight='bold')
 
 # ------------- Cas 1 -------------
 cas1 = cv2.imread("./Image_files/cas_1.png")
@@ -10,8 +12,6 @@ cas1 = cv2.cvtColor(cas1, cv2.COLOR_BGR2RGB)
 
 cas1_double = cas1.astype(float) / 255.0
 
-plt.figure(figsize=(15,8))
-plt.suptitle("Exercice 2 - Traitements sur 3 cas avec problèmes de bruit et/ou de constraste", weight='bold')
 # L’image
 plt.subplot(3,4,1)
 plt.imshow(cas1_double)
@@ -52,7 +52,7 @@ plt.title("Cas 2")
 plt.axis("off")
 
 # On identifie un bruit gaussien --> annulé avec filtre gaussien
-cas2_gaussian = cv2.GaussianBlur(cas2, (3, 3), 0)
+cas2_gaussian = cv2.GaussianBlur(cas2, (5,5), 0)
 plt.subplot(3,4,6)
 plt.imshow(cas2_gaussian)
 plt.title("Filtre Gaussien")
@@ -118,4 +118,17 @@ plt.axis("off")
 
 
 plt.tight_layout(rect=[0, 0.03, 1, 0.95]) # Organisation de la fenêtre
+
+plt.imsave(f"Res_Ex2/01_originale_cas1.png", cas1_double)
+plt.imsave(f"Res_Ex2/02_filre_median_cas1.png", cas_1_median, cmap="gray")
+plt.imsave(f"Res_Ex2/03_contour_durcis_cas2.png", cas_1_sharp, cmap="gray")
+
+plt.imsave(f"Res_Ex2/04_originale_cas2.png", cas2_double, cmap="gray")
+plt.imsave(f"Res_Ex2/05_filtre_gaussien_cas2.png", cas2_gaussian)
+plt.imsave(f"Res_Ex2/06_filtre_bilatéral_cas2.png", cas2_bilateral)
+
+plt.imsave(f"Res_Ex2/07_originale_cas3.png", cas3_double)
+plt.imsave(f"Res_Ex2/08_normalisation_cas3.png", cas3_normal)
+plt.imsave(f"Res_Ex2/09_normalisation_bilateral_cas3.png", cas3_normal_bilateral)
+plt.imsave(f"Res_Ex2/10_bilateral_normalisation_cas3.png", cas3_bilateral_normal)
 plt.show()
