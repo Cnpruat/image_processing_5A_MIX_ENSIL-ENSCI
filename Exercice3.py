@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.figure(figsize=(15,8))
+plt.suptitle("Exercice 3 - Isolation des contours d'une forme", weight='bold')
 
 # ------------- Cas 1 -------------
 yellow = cv2.imread("./Image_files/yellowtargets.png")
@@ -12,7 +14,6 @@ yellow_HSV = cv2.cvtColor(yellow, cv2.COLOR_BGR2HSV)
 yellow_RGB_double = yellow_RGB.astype(float) / 255.0
 yellow_HSV_double = yellow_HSV.astype(float) / 255.0
 
-plt.figure(figsize=(15,8))
 plt.subplot(3,5,1)
 plt.imshow(yellow_RGB_double)
 plt.title("Image de référence - Espace RGB")
@@ -25,6 +26,7 @@ plt.axis("off")
 
 # ------------- Question 1 -------------
 # Seuillage
+
 # Calcul de l’intensité (Somme H+S+V)
 S = np.sum(yellow_HSV_double, axis=2)
 S[S==0] = 1.0 # Eviter division par zero
@@ -59,6 +61,7 @@ plt.axis("off")
 # ------------- Question 2 -------------
 # Elément structurant pour ouverture et fermeture
 # (5,5) / (7,7) / (9,9)
+
 kernel = np.ones((7,7), np.uint8)
 
 # OUVERTURE = Erosion -> Dilatation (Pour supprimer le bruit blanc autour) 
@@ -96,6 +99,8 @@ plt.title("Résultat ouverture puis fermeture")
 plt.axis("off")
 
 # ------------- Question 3 -------------
+# Détection des contours
+
 mask_erosion = cv2.erode(mask_ouverture_fermeture, kernel, iterations=1)
 mask_dilatation = cv2.dilate(mask_ouverture_fermeture, kernel, iterations=1)
 
@@ -150,6 +155,7 @@ plt.imshow(resultat_canny, cmap='gray')
 plt.title("Résultat - filtre de Canny")
 plt.axis("off")
 
+# Enregistrement des images
 plt.imsave(f"Res_Ex3/01_originale_RGB.png", yellow_RGB_double, cmap="gray")
 plt.imsave(f"Res_Ex3/02_originale_HSV.png", yellow_HSV_double, cmap="gray")
 
