@@ -116,19 +116,18 @@ plt.imshow(cas3_bilateral_normal)
 plt.title("Cas 3 - Filtre bilatéral puis normalisée")
 plt.axis("off")
 
-
-plt.tight_layout(rect=[0, 0.03, 1, 0.95]) # Organisation de la fenêtre
-
-plt.imsave(f"Res_Ex2/01_originale_cas1.png", cas1_double)
+plt.imsave(f"Res_Ex2/01_originale_cas1.png", cas1_double, cmap="gray")
 plt.imsave(f"Res_Ex2/02_filre_median_cas1.png", cas_1_median, cmap="gray")
 plt.imsave(f"Res_Ex2/03_contour_durcis_cas2.png", cas_1_sharp, cmap="gray")
 
 plt.imsave(f"Res_Ex2/04_originale_cas2.png", cas2_double, cmap="gray")
-plt.imsave(f"Res_Ex2/05_filtre_gaussien_cas2.png", cas2_gaussian)
-plt.imsave(f"Res_Ex2/06_filtre_bilatéral_cas2.png", cas2_bilateral)
+plt.imsave(f"Res_Ex2/05_filtre_gaussien_cas2.png", cas2_gaussian, cmap="gray")
+plt.imsave(f"Res_Ex2/06_filtre_bilatéral_cas2.png", cas2_bilateral, cmap="gray")
 
-plt.imsave(f"Res_Ex2/07_originale_cas3.png", cas3_double)
-plt.imsave(f"Res_Ex2/08_normalisation_cas3.png", cas3_normal)
-plt.imsave(f"Res_Ex2/09_normalisation_bilateral_cas3.png", cas3_normal_bilateral)
-plt.imsave(f"Res_Ex2/10_bilateral_normalisation_cas3.png", cas3_bilateral_normal)
+plt.imsave(f"Res_Ex2/07_originale_cas3.png", cas3_double, cmap="gray")
+plt.imsave(f"Res_Ex2/08_normalisation_cas3.png", cas3_normal, cmap="gray")
+plt.imsave(f"Res_Ex2/09_normalisation_bilateral_cas3.png", cas3_normal_bilateral, cmap="gray")
+plt.imsave(f"Res_Ex2/10_bilateral_normalisation_cas3.png", cas3_bilateral_normal, cmap="gray")
+
+plt.tight_layout(rect=[0, 0.03, 1, 0.95]) # Organisation de la fenêtre
 plt.show()

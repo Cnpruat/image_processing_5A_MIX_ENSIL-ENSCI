@@ -123,19 +123,19 @@ plt.imshow(resultat_final)
 plt.title("Résultat - Uniquement cercle bleu")
 plt.axis("off")
 
-plt.tight_layout(rect=[0, 0.03, 1, 0.95]) # Organisation de la fenêtre
-
-plt.imsave(f"Res_Ex1/01_originale.png", shapes_double)
+plt.imsave(f"Res_Ex1/01_originale.png", shapes_double, cmap="gray")
 
 plt.imsave(f"Res_Ex1/02_masque_bleu.png", maskB, cmap="gray")
 plt.imsave(f"Res_Ex1/03_masque_bleu_fonce.png", maskBF, cmap="gray")
 plt.imsave(f"Res_Ex1/04_masque_bleu_ciel.png", maskBC, cmap="gray")
 
-plt.imsave(f"Res_Ex1/05_selection_bleus.png", resultat)
-plt.imsave(f"Res_Ex1/06_selection_fonce.png", resultatF)
-plt.imsave(f"Res_Ex1/07_selection_ciel.png", resultatC)
+plt.imsave(f"Res_Ex1/05_selection_bleus.png", resultat, cmap="gray")
+plt.imsave(f"Res_Ex1/06_selection_fonce.png", resultatF, cmap="gray")
+plt.imsave(f"Res_Ex1/07_selection_ciel.png", resultatC, cmap="gray")
 
-plt.imsave(f"Res_Ex1/08_masque_cercle.png", mask_cercle_3d)
-plt.imsave(f"Res_Ex1/09_resultat_cercle_bleu.png", resultat_final)
+plt.imsave(f"Res_Ex1/08_masque_cercle.png", mask_cercle_3d, cmap="gray")
+plt.imsave(f"Res_Ex1/09_resultat_cercle_bleu.png", resultat_final, cmap="gray")
+
+plt.tight_layout(rect=[0, 0.03, 1, 0.95]) # Organisation de la fenêtre
 plt.show()
 # %%
