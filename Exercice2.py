@@ -12,26 +12,26 @@ cas1 = cv2.cvtColor(cas1, cv2.COLOR_BGR2RGB)
 
 cas1_double = cas1.astype(float) / 255.0
 
-# L’image
+# Image originale
 plt.subplot(3,4,1)
 plt.imshow(cas1_double)
 plt.title("Cas 1")
 plt.axis("off")
 
 # On identifie un bruit poivre et sel --> filtre médian efficace
-# Application du filtre médian (Valeur peut être réglé à 3, 5, 7,...)
+# Application du filtre médian (Valeur : 3, 5, 7,...)
 cas_1_median = cv2.medianBlur(cas1, 5)
 plt.subplot(3,4,5)
 plt.imshow(cas_1_median)
 plt.title("Filtre médian")
 plt.axis("off")
 
-# Elément structurant de "Sharpening" pour durcir les contours 
+# Création du noyau pour réhausser les contours
 kernel_sharpening = np.array([[-1, -1, -1],
                               [-1,  9, -1],
                               [-1, -1, -1]])
 
-# Application du filtre
+# Application du filtre réhausseur de contours
 cas_1_sharp = cv2.filter2D(cas_1_median, -1, kernel_sharpening)
 
 plt.subplot(3,4,9)
@@ -43,7 +43,6 @@ plt.axis("off")
 cas2 = cv2.imread("./Image_files/cas_2.png")
 cas2 = cv2.cvtColor(cas2, cv2.COLOR_BGR2RGB)
 
-# Normalisation en flottant (0.0 - 1.0)
 cas2_double = cas2.astype(float) / 255.0
 
 plt.subplot(3,4,2)
@@ -51,7 +50,7 @@ plt.imshow(cas2_double)
 plt.title("Cas 2")
 plt.axis("off")
 
-# On identifie un bruit gaussien --> annulé avec filtre gaussien
+# On identifie un bruit gaussien --> filtre gaussien efficace
 cas2_gaussian = cv2.GaussianBlur(cas2, (5,5), 0)
 plt.subplot(3,4,6)
 plt.imshow(cas2_gaussian)
@@ -73,7 +72,7 @@ cas3 = cv2.cvtColor(cas3, cv2.COLOR_BGR2RGB)
 # Normalisation en flottant (0.0 - 1.0)
 cas3_double = cas3.astype(float) / 255.0
 
-# L’image
+# Image originale
 plt.subplot(3,4,3)
 plt.imshow(cas3_double)
 plt.title("Cas 3")
@@ -116,6 +115,7 @@ plt.imshow(cas3_bilateral_normal)
 plt.title("Cas 3 - Filtre bilatéral puis normalisée")
 plt.axis("off")
 
+# Enregistrement des images
 plt.imsave(f"Res_Ex2/01_originale_cas1.png", cas1_double, cmap="gray")
 plt.imsave(f"Res_Ex2/02_filre_median_cas1.png", cas_1_median, cmap="gray")
 plt.imsave(f"Res_Ex2/03_contour_durcis_cas2.png", cas_1_sharp, cmap="gray")
